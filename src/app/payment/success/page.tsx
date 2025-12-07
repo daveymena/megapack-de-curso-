@@ -1,27 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Download, Mail } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-export default function PaymentSuccessPage() {
+function PaymentSuccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [paymentDetails, setPaymentDetails] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Obtener los parámetros de la URL
     const paymentId = searchParams.get('payment_id');
     const status = searchParams.get('status');
     const external_reference = searchParams.get('external_reference');
     const merchant_order_id = searchParams.get('merchant_order_id');
 
-    // Simular la obtención de detalles del pago
-    // En un entorno real, aquí harías una llamada a tu API para obtener los detalles
     setTimeout(() => {
       setPaymentDetails({
         paymentId,
@@ -36,7 +33,6 @@ export default function PaymentSuccessPage() {
   }, [searchParams]);
 
   const handleDownload = () => {
-    // Solo permitir descarga si el pago fue aprobado
     const status = paymentDetails?.status;
     if (status === 'approved' || status === 'success') {
       window.open('https://drive.google.com/drive/folders/1nyGxtM-0gOy98e4bAHd50VooPhicvM_8', '_blank');
@@ -45,11 +41,9 @@ export default function PaymentSuccessPage() {
     }
   };
 
-  // Redirigir automáticamente al Google Drive solo si el pago fue aprobado
   useEffect(() => {
     if (!isLoading && paymentDetails) {
       const status = paymentDetails.status;
-      // Solo redirigir si el pago fue aprobado
       if (status === 'approved' || status === 'success') {
         const timer = setTimeout(() => {
           window.open('https://drive.google.com/drive/folders/1nyGxtM-0gOy98e4bAHd50VooPhicvM_8', '_blank');
@@ -167,5 +161,20 @@ export default function PaymentSuccessPage() {
       
       <WhatsAppButton />
     </div>
+  );
+}
+
+export default function PaymentSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-lg">Cargando...</p>
+        </div>
+      </div>
+    }>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }

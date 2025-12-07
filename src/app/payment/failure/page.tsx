@@ -1,26 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { XCircle, RefreshCw, MessageCircle } from "lucide-react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-export default function PaymentFailurePage() {
+function PaymentFailureContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [errorDetails, setErrorDetails] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Obtener los parámetros de la URL
     const paymentId = searchParams.get('payment_id');
     const status = searchParams.get('status');
     const external_reference = searchParams.get('external_reference');
     const merchant_order_id = searchParams.get('merchant_order_id');
 
-    // Simular la obtención de detalles del error
     setTimeout(() => {
       setErrorDetails({
         paymentId,
@@ -43,7 +41,7 @@ export default function PaymentFailurePage() {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-lg">Procesando tu pago...</p>
+          <p className="text-lg">Procesando...</p>
         </div>
       </div>
     );
@@ -155,5 +153,20 @@ export default function PaymentFailurePage() {
       
       <WhatsAppButton />
     </div>
+  );
+}
+
+export default function PaymentFailurePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-lg">Cargando...</p>
+        </div>
+      </div>
+    }>
+      <PaymentFailureContent />
+    </Suspense>
   );
 }
