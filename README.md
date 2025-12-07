@@ -1,141 +1,147 @@
-# 🚀 Welcome to Z.ai Code Scaffold
+# 🎓 Megapack de Cursos - Sistema de Pagos
 
-A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
+Plataforma de venta de cursos digitales con integración de PayPal y Mercado Pago. Construida con Next.js 15, Tailwind CSS, shadcn/ui y TypeScript.
 
-## ✨ Technology Stack
+## 🚀 Deploy en Vercel (1 Click)
 
-This scaffold provides a robust foundation built with:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/daveymena/megapack-de-curso-)
 
-### 🎯 Core Framework
-- **⚡ Next.js 15** - The React framework for production with App Router
-- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
-- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+### 📋 Pasos para desplegar en Vercel:
 
-### 🧩 UI Components & Styling
-- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
-- **🎯 Lucide React** - Beautiful & consistent icon library
-- **🌈 Framer Motion** - Production-ready motion library for React
-- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
+1. **Haz clic en el botón "Deploy with Vercel"** arriba
+2. **Conecta tu cuenta de GitHub** si aún no lo has hecho
+3. **Importa el repositorio**
+4. **Configura las variables de entorno** (ver abajo)
+5. **Despliega** y listo! 🎉
 
-### 📋 Forms & Validation
-- **🎣 React Hook Form** - Performant forms with easy validation
-- **✅ Zod** - TypeScript-first schema validation
+### 🔐 Variables de Entorno Requeridas
 
-### 🔄 State Management & Data Fetching
-- **🐻 Zustand** - Simple, scalable state management
-- **🔄 TanStack Query** - Powerful data synchronization for React
-- **🌐 Axios** - Promise-based HTTP client
+En Vercel, ve a **Settings → Environment Variables** y agrega:
 
-### 🗄️ Database & Backend
-- **🗄️ Prisma** - Next-generation Node.js and TypeScript ORM
-- **🔐 NextAuth.js** - Complete open-source authentication solution
+```env
+# Mercado Pago (Colombia)
+MERCADO_PAGO_ACCESS_TOKEN=tu_access_token_aqui
+MERCADO_PAGO_PUBLIC_KEY=tu_public_key_aqui
 
-### 🎨 Advanced UI Features
-- **📊 TanStack Table** - Headless UI for building tables and datagrids
-- **🖱️ DND Kit** - Modern drag and drop toolkit for React
-- **📊 Recharts** - Redefined chart library built with React and D3
-- **🖼️ Sharp** - High performance image processing
+# PayPal (Internacional)
+PAYPAL_CLIENT_ID=tu_client_id_aqui
+PAYPAL_CLIENT_SECRET=tu_client_secret_aqui
+PAYPAL_MODE=live
+PAYPAL_API_URL=https://api-m.paypal.com
 
-### 🌍 Internationalization & Utilities
-- **🌍 Next Intl** - Internationalization library for Next.js
-- **📅 Date-fns** - Modern JavaScript date utility library
-- **🪝 ReactUse** - Collection of essential React hooks for modern development
-
-## 🎯 Why This Scaffold?
-
-- **🏎️ Fast Development** - Pre-configured tooling and best practices
-- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
-- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
-- **📱 Responsive** - Mobile-first design principles with smooth animations
-- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
-- **🔐 Auth Included** - NextAuth.js for secure authentication flows
-- **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
-- **🌍 i18n Ready** - Multi-language support with Next Intl
-- **🚀 Production Ready** - Optimized build and deployment settings
-- **🤖 AI-Friendly** - Structured codebase perfect for AI assistance
-
-## 🚀 Quick Start
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
+# URL de tu aplicación
+NEXT_PUBLIC_BASE_URL=https://tu-proyecto.vercel.app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see your application running.
+**Importante:** Después del primer deploy, actualiza `NEXT_PUBLIC_BASE_URL` con tu URL real de Vercel.
 
-## 🤖 Powered by Z.ai
+## 📦 Características
 
-This scaffold is optimized for use with [Z.ai](https://chat.z.ai) - your AI assistant for:
+- ✅ **40 Megapacks** de cursos digitales
+- ✅ **PayPal** - Pagos internacionales en USD
+- ✅ **Mercado Pago** - Pagos en Colombia (COP)
+- ✅ **Verificación de pagos** antes de dar acceso
+- ✅ **Redirección automática** a Google Drive después del pago
+- ✅ **Imágenes profesionales** de Unsplash
+- ✅ **Diseño responsive** con Tailwind CSS
+- ✅ **Componentes UI** de shadcn/ui
+- ✅ **WhatsApp** integrado para soporte
 
-- **💻 Code Generation** - Generate components, pages, and features instantly
-- **🎨 UI Development** - Create beautiful interfaces with AI assistance  
-- **🔧 Bug Fixing** - Identify and resolve issues with intelligent suggestions
-- **📝 Documentation** - Auto-generate comprehensive documentation
-- **🚀 Optimization** - Performance improvements and best practices
+## 🛠️ Instalación Local
 
-Ready to build something amazing? Start chatting with Z.ai at [chat.z.ai](https://chat.z.ai) and experience the future of AI-powered development!
+```bash
+# Clonar el repositorio
+git clone https://github.com/daveymena/megapack-de-curso-.git
+cd megapack-de-curso-
 
-## 📁 Project Structure
+# Instalar dependencias
+npm install
+
+# Copiar el archivo de ejemplo de variables de entorno
+cp .env.example .env.local
+
+# Editar .env.local con tus credenciales
+# nano .env.local
+
+# Iniciar el servidor de desarrollo
+npm run dev
+```
+
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+
+## 📁 Estructura del Proyecto
 
 ```
 src/
-├── app/                 # Next.js App Router pages
-├── components/          # Reusable React components
-│   └── ui/             # shadcn/ui components
-├── hooks/              # Custom React hooks
-└── lib/                # Utility functions and configurations
+├── app/
+│   ├── api/
+│   │   ├── mercadopago/        # API de Mercado Pago
+│   │   └── paypal/             # API de PayPal
+│   ├── payment/                # Páginas de pago
+│   │   ├── success/            # Pago exitoso
+│   │   ├── failure/            # Pago fallido
+│   │   ├── pending/            # Pago pendiente
+│   │   ├── cancel/             # Pago cancelado
+│   │   ├── links/              # Links de pago dinámicos
+│   │   └── static-links/       # Links de pago estáticos
+│   └── page.tsx                # Página principal
+├── components/
+│   ├── ui/                     # Componentes shadcn/ui
+│   ├── MegaPackCard.tsx        # Tarjeta de megapack
+│   ├── PaymentMethods.tsx      # Métodos de pago
+│   └── WhatsAppButton.tsx      # Botón de WhatsApp
+└── lib/                        # Utilidades
 ```
 
-## 🎨 Available Features & Components
+## 💳 Configuración de Pagos
 
-This scaffold includes a comprehensive set of modern web development tools:
+### Mercado Pago (Colombia)
 
-### 🧩 UI Components (shadcn/ui)
-- **Layout**: Card, Separator, Aspect Ratio, Resizable Panels
-- **Forms**: Input, Textarea, Select, Checkbox, Radio Group, Switch
-- **Feedback**: Alert, Toast (Sonner), Progress, Skeleton
-- **Navigation**: Breadcrumb, Menubar, Navigation Menu, Pagination
-- **Overlay**: Dialog, Sheet, Popover, Tooltip, Hover Card
-- **Data Display**: Badge, Avatar, Calendar
+1. Crea una cuenta en [Mercado Pago](https://www.mercadopago.com.co)
+2. Ve a **Tus integraciones → Credenciales**
+3. Copia el **Access Token** y **Public Key** de producción
+4. Agrégalos a las variables de entorno
 
-### 📊 Advanced Data Features
-- **Tables**: Powerful data tables with sorting, filtering, pagination (TanStack Table)
-- **Charts**: Beautiful visualizations with Recharts
-- **Forms**: Type-safe forms with React Hook Form + Zod validation
+### PayPal (Internacional)
 
-### 🎨 Interactive Features
-- **Animations**: Smooth micro-interactions with Framer Motion
-- **Drag & Drop**: Modern drag-and-drop functionality with DND Kit
-- **Theme Switching**: Built-in dark/light mode support
+1. Crea una cuenta en [PayPal Developer](https://developer.paypal.com)
+2. Ve a **Dashboard → My Apps & Credentials**
+3. Crea una app en **Live**
+4. Copia el **Client ID** y **Secret**
+5. Agrégalos a las variables de entorno
 
-### 🔐 Backend Integration
-- **Authentication**: Ready-to-use auth flows with NextAuth.js
-- **Database**: Type-safe database operations with Prisma
-- **API Client**: HTTP requests with Axios + TanStack Query
-- **State Management**: Simple and scalable with Zustand
+## 🔗 Links Útiles
 
-### 🌍 Production Features
-- **Internationalization**: Multi-language support with Next Intl
-- **Image Optimization**: Automatic image processing with Sharp
-- **Type Safety**: End-to-end TypeScript with Zod validation
-- **Essential Hooks**: 100+ useful React hooks with ReactUse for common patterns
+- **Página principal:** `/`
+- **Página de pago:** `/payment`
+- **Links estáticos:** `/payment/static-links`
+- **Links dinámicos:** `/payment/links`
 
-## 🤝 Get Started with Z.ai
+## 🌐 Tecnologías Utilizadas
 
-1. **Clone this scaffold** to jumpstart your project
-2. **Visit [chat.z.ai](https://chat.z.ai)** to access your AI coding assistant
-3. **Start building** with intelligent code generation and assistance
-4. **Deploy with confidence** using the production-ready setup
+- **Next.js 15** - Framework React
+- **TypeScript** - Tipado estático
+- **Tailwind CSS** - Estilos
+- **shadcn/ui** - Componentes UI
+- **Mercado Pago API** - Pagos Colombia
+- **PayPal API** - Pagos internacionales
+- **Unsplash** - Imágenes
+
+## 📝 Notas Importantes
+
+- Los links de PayPal expiran después de 3 horas
+- Los links de Mercado Pago son permanentes
+- El acceso a Google Drive solo se da después de verificar el pago
+- Las imágenes se cargan desde Unsplash (requiere conexión a internet)
+
+## 🤝 Soporte
+
+Para soporte, contacta por WhatsApp: **3042748687**
+
+## 📄 Licencia
+
+Este proyecto es de código abierto y está disponible bajo la licencia MIT.
 
 ---
 
-Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
+Hecho con ❤️ para la comunidad educativa
